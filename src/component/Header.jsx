@@ -8,8 +8,8 @@ import {
 import { RecipeContext } from "../context/RecipeContext";
 
 const Header = () => {
-  const { search, setSearch, apiData } = useContext(RecipeContext);
-
+  const { apiData, recipes } = useContext(RecipeContext);
+  const [search, setSearch] = useState("");
   const handleInputChange = (e) => {
     setSearch(e.target.value);
   };
