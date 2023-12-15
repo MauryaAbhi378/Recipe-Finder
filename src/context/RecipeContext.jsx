@@ -18,10 +18,6 @@ export const RecipeProvider = ({ children }) => {
     }
   };
 
-  useEffect(() => {
-    apiData("");
-  }, []);
-
   return (
     <RecipeContext.Provider value={{ recipes, apiData }}>
       {children}
