@@ -8,15 +8,14 @@ import {
 import { RecipeContext } from "../context/RecipeContext";
 
 const Header = () => {
-  const { search, setSearch, loading, apiData } = useContext(RecipeContext);
-  // console.log(recipeState)
+  const { search, setSearch, apiData } = useContext(RecipeContext);
 
   const handleInputChange = (e) => {
     setSearch(e.target.value);
   };
 
   const handleButtonClick = () => {
-    apiData();
+    apiData(search);
   };
 
   return (
@@ -32,14 +31,14 @@ const Header = () => {
           value={search}
           onChange={handleInputChange}
         />
-        <FontAwesomeIcon icon={faMagnifyingGlass} className="cursor-pointer" />
+        <FontAwesomeIcon
+          icon={faMagnifyingGlass}
+          className="cursor-pointer"
+          onClick={handleButtonClick} // Trigger search on icon click
+        />
       </div>
-      <span
-        className="cursor-pointer"
-        onClick={handleButtonClick}
-        disabled={loading}
-      >
-        {loading ? "Loading..." : <FontAwesomeIcon icon={faHeart} />}
+      <span className="cursor-pointer">
+        <FontAwesomeIcon icon={faHeart} />
       </span>
     </div>
   );

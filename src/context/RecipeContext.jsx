@@ -4,26 +4,28 @@ export const RecipeContext = createContext();
 
 export const RecipeProvider = ({ children }) => {
   const [search, setSearch] = useState("");
-  const [recipes, setRecipes] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const apiData = async () => {
-    const api = await fetch(
-      `https://api.spoonacular.com/recipes/complexSearch?apiKey=e8c5c5401a624c799ee54f92d381b35a&query=${search}`
-    );
-    const data = await api.json();
-    console.log(data.results);
-    setRecipes(data.recipes);
-    setLoading(false);
-  };
+  const [recipes, setRecipes] = useState([]); // Define recipes state
 
-  // useEffect(() => {
-  //   apiData()
-  // }, [search]);
+  const apiData = useCallback(async (searchValue) => {
+    try {
+      const api = await fetch(
+        `https://api.spoonacular.com/recipes/complexSearch?apiKey=f3b8213250e04452abd141b9b731f2c4&query=${searchValue}`
+      );
+      const data = await api.json();
+      setRecipes(data.results); // Update recipes state with fetched data
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  }, []);
+
+  useEffect(() => {
+    
+      apiData(search);
+    
+  }, [search, apiData]);
 
   return (
-    <RecipeContext.Provider
-      value={{ search, setSearch, recipes, loading, apiData }}
-    >
+    <RecipeContext.Provider value={{ search, setSearch, recipes, apiData }}>
       {children}
     </RecipeContext.Provider>
   );
