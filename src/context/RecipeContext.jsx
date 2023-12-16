@@ -11,7 +11,6 @@ export const RecipeProvider = ({ children }) => {
         `https://api.spoonacular.com/recipes/complexSearch?apiKey=f3b8213250e04452abd141b9b731f2c4&query=${searchValue}`
       );
       const data = await api.json();
-      console.log(data.results);
       setRecipes(data.results); // Update recipes state with fetched data
       console.log(recipes)
     } catch (error) {
