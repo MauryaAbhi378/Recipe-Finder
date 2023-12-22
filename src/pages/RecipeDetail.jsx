@@ -9,7 +9,7 @@ const RecipeDetail = () => {
 
   const fetchDetails = async () => {
     const data = await fetch(
-      `https://api.spoonacular.com/recipes/${params.name}/information?apiKey=f3b8213250e04452abd141b9b731f2c4`
+      `https://api.spoonacular.com/recipes/${params.name}/information?apiKey=7561c94016cf478cbf0abe03c8c6cf5c`
     );
     const details = await data.json();
     console.log(details);
@@ -47,16 +47,17 @@ const RecipeDetail = () => {
           </button>
         </div>
 
-        {activeTab === "instructions" ? (
+        {activeTab === "ingredients" ? (
           <div>
-            <h3 dangerouslySetInnerHTML={{ __html: details.summary }}></h3>
+            {details.extendedIngredients.map((ingredient) => (
+              <li className="text-black" key={ingredient.id}>
+                {ingredient.original}
+              </li>
+            ))}
           </div>
         ) : (
-          <ul>
-            {details.extendedIngredients.map((ingredient) => {
-              <li key={ingredient.id}>{ingredient.original}</li>;
-            })}
-          </ul>
+          <h3 dangerouslySetInnerHTML={{ __html:details.summary}}></h3>
+          
         )}
       </div>
     </div>

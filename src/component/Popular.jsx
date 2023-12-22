@@ -7,7 +7,7 @@ const Popular = () => {
   const [popular, setPopular] = useState([]);
   const getPopular = async () => {
     const api = await fetch(
-      `https://api.spoonacular.com/recipes/random?apiKey=f3b8213250e04452abd141b9b731f2c4&number=9`
+      `https://api.spoonacular.com/recipes/random?apiKey=7561c94016cf478cbf0abe03c8c6cf5c&number=9`
     );
     const data = await api.json();
 
