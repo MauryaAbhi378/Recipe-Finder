@@ -5,7 +5,7 @@ import { RecipeContext } from "../context/RecipeContext";
 import { useNavigate } from "react-router-dom";
 
 const Header = () => {
-  const { apiData, recipes } = useContext(RecipeContext);
+  const { apiData } = useContext(RecipeContext);
   const [search, setSearch] = useState("");
   const navigate = useNavigate();
 
@@ -33,7 +33,7 @@ const Header = () => {
           <FontAwesomeIcon
             icon={faMagnifyingGlass}
             className="cursor-pointer"
-            onClick={handleButtonClick} // Trigger search on icon click
+            onClick={handleButtonClick} 
           />
         </div>
       </div>

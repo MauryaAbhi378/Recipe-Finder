@@ -8,10 +8,10 @@ export const RecipeProvider = ({ children }) => {
   const apiData = async (searchValue) => {
     try {
       const api = await fetch(
-        `https://api.spoonacular.com/recipes/complexSearch?apiKey=7561c94016cf478cbf0abe03c8c6cf5c&query=${searchValue}`
+        `https://api.spoonacular.com/recipes/complexSearch?apiKey=f3b8213250e04452abd141b9b731f2c4&query=${searchValue}`
       );
       const data = await api.json();
-      console.log(data.results);
+      console.log(data.results)
       setRecipes(data.results); // Update recipes state with fetched data
 
       return data.recipes;

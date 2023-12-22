@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 
 const Category = () => {
   return (
-    <div className="flex w-4/5 m-auto justify-center pt-5">
+    <div className={"flex w-4/5 m-auto justify-center pt-5"}>
       <NavLink
         to="/cuisine/Italian"
         className={({ isActive }) =>
