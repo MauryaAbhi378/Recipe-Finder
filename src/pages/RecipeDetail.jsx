@@ -12,7 +12,6 @@ const RecipeDetail = () => {
       `https://api.spoonacular.com/recipes/${params.name}/information?apiKey=7561c94016cf478cbf0abe03c8c6cf5c`
     );
     const details = await data.json();
-    console.log(details);
     setDetails(details);
   };
 

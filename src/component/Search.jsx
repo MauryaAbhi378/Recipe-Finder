@@ -17,6 +17,7 @@ const Header = () => {
     e.preventDefault();
     apiData(search);
     navigate(`/searched/${search}`);
+    setSearch("")
   };
 
   return (

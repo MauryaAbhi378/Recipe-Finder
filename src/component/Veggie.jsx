@@ -5,12 +5,19 @@ import RecipeCard from "./RecipeCard";
 
 const Veggie = () => {
   const [veggie, setVeggie] = useState([]);
+
   const getVeggie = async () => {
-    const api = await fetch(
-      `https://api.spoonacular.com/recipes/random?apiKey=7561c94016cf478cbf0abe03c8c6cf5c&number=9&tags=vegetarian`
-    );
-    const data = await api.json();
-    setVeggie(data.recipes);
+    let check = localStorage.getItem("veggie");
+    if (check) {
+      setVeggie(JSON.parse(check));
+    } else {
+      const api = await fetch(
+        `https://api.spoonacular.com/recipes/random?apiKey=7561c94016cf478cbf0abe03c8c6cf5c&number=9&tags=vegetarian`
+      );
+      const data = await api.json();
+      localStorage.setItem("veggie", JSON.stringify(data.recipes));
+      setVeggie(data.recipes);
+    }
   };
 
   useEffect(() => {
@@ -19,7 +26,9 @@ const Veggie = () => {
 
   return (
     <>
-      <h1 className="mt-12 pl-48 mb-5 font-semibold text-lg">Our Vegetarian Picks</h1>
+      <h1 className="mt-12 pl-48 mb-5 font-semibold text-lg">
+        Our Vegetarian Picks
+      </h1>
       <div className="w-4/5 mx-auto">
         <Splide
           options={{
@@ -30,14 +39,12 @@ const Veggie = () => {
           }}
         >
           {veggie.map((recipe) => {
-            return (
-              <RecipeCard recipe={recipe}/>
-            );
+            return <RecipeCard recipe={recipe} />;
           })}
         </Splide>
       </div>
     </>
   );
-}
+};
 
-export default Veggie
+export default Veggie;
