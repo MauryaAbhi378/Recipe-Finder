@@ -38,8 +38,8 @@ const Veggie = () => {
             pagination: false,
           }}
         >
-          {veggie.map((recipe) => {
-            return <RecipeCard recipe={recipe} />;
+          {veggie.map((recipe, id) => {
+            return <RecipeCard key={id} recipe={recipe} />;
           })}
         </Splide>
       </div>

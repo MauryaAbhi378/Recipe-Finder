@@ -11,7 +11,7 @@ const RecipeCard = ({ recipe: { id, image, title } }) => {
         <Link to={`/recipe/${id}`}>
           <img src={image} className="rounded-3xl" />
           <div className="flex justify-between">
-            <p className="absolute bottom-4 left-0 right-0 text-center text-white font-bold">
+            <p className="absolute bottom-4 left-0 right-0 text-center text-black font-bold">
               {title}
             </p>
             <CiHeart

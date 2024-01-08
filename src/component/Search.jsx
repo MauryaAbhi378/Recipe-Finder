@@ -5,7 +5,7 @@ import { RecipeContext } from "../context/RecipeContext";
 import { useNavigate } from "react-router-dom";
 
 const Header = () => {
-  const { apiData } = useContext(RecipeContext);
+  const { recipes, apiData } = useContext(RecipeContext);
   const [search, setSearch] = useState("");
   const navigate = useNavigate();
 
@@ -17,12 +17,12 @@ const Header = () => {
     e.preventDefault();
     apiData(search);
     navigate(`/searched/${search}`);
-    setSearch("")
+    setSearch("");
   };
 
   return (
     <>
-      <div className="flex justify-center">
+      <div className="flex justify-center flex-col items-center">
         <div className="flex justify-center items-center mt-10 w-1/4 ring-1 ring-slate-600 rounded-md p-2">
           <input
             type="text"
@@ -34,7 +34,7 @@ const Header = () => {
           <FontAwesomeIcon
             icon={faMagnifyingGlass}
             className="cursor-pointer"
-            onClick={handleButtonClick} 
+            onClick={handleButtonClick}
           />
         </div>
       </div>

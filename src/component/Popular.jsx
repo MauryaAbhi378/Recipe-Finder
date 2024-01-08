@@ -37,8 +37,8 @@ const Popular = () => {
             pagination: false,
           }}
         >
-          {popular.map((recipe) => {
-            return <RecipeCard recipe={recipe} />;
+          {popular.map((recipe, id) => {
+            return <RecipeCard key={id} recipe={recipe} />;
           })}
         </Splide>
       </div>
