@@ -12,9 +12,7 @@ const Header = () => {
           <GiKnifeFork />
           <div className="text-lg font-medium">delicious</div>
         </Link>
-        <span className="cursor-pointer">
-          <FontAwesomeIcon icon={faHeart} />
-        </span>
+        <Link to={"/favourite"} className="bg-blue-400 text-white p-2 rounded-sm">Favourites</Link>
       </div>
     </>
   );
