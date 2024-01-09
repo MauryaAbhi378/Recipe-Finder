@@ -7,19 +7,25 @@ export const RecipeProvider = ({ children }) => {
   const [favourites, setFavourites] = useState([]);
 
   useEffect(() => {
-    const check = localStorage.getItem("favourite");
+    const check = JSON.parse(localStorage.getItem("favourites"));
     if (check) {
-      setFavourites(JSON.parse(check));
+      setFavourites(check);
     }
   }, []);
 
   useEffect(() => {
-    localStorage.setItem("favourite", JSON.stringify(favourites));
+    localStorage.setItem("favourites", JSON.stringify(favourites));
   }, [favourites]);
 
   const addToFavourite = (id, image, title) => {
     const newFavourite = { id, image, title };
     setFavourites((prevFavourite) => [...prevFavourite, newFavourite]);
+  };
+
+  const removeFromFavourite = (id) => {
+    setFavourites((prevFavourite) =>
+      prevFavourite.filter((prev) => prev.id !== id)
+    );
   };
 
   const apiData = async (searchValue) => {
@@ -38,7 +44,13 @@ export const RecipeProvider = ({ children }) => {
 
   return (
     <RecipeContext.Provider
-      value={{ recipes, apiData, addToFavourite, favourites }}
+      value={{
+        recipes,
+        apiData,
+        addToFavourite,
+        favourites,
+        removeFromFavourite,
+      }}
     >
       {children}
     </RecipeContext.Provider>
