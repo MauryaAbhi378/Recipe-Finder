@@ -1,10 +1,12 @@
 import { createContext, useEffect, useState } from "react";
+import { toast } from "react-toastify";
 
 export const RecipeContext = createContext();
 
 export const RecipeProvider = ({ children }) => {
   const [recipes, setRecipes] = useState([]); // Define recipes state
-  const[isAdded, setIsAdded] = useState(false)
+  const [isAdded, setIsAdded] = useState(false);
+
   const [favourites, setFavourites] = useState(() => {
     const storedFavourites = JSON.parse(localStorage.getItem("favourites"));
     return storedFavourites || [];
@@ -24,13 +26,15 @@ export const RecipeProvider = ({ children }) => {
   const addToFavourite = (id, image, title) => {
     const newFavourite = { id, image, title };
     setFavourites((prevFavourite) => [...prevFavourite, newFavourite]);
-    setIsAdded(!isAdded)
+    setIsAdded(!isAdded);
+    toast("Added to favourite");
   };
 
   const removeFromFavourite = (id) => {
     setFavourites((prevFavourite) =>
       prevFavourite.filter((prev) => prev.id !== id)
     );
+    toast("Removed from favourites");
   };
 
   const apiData = async (searchValue) => {

@@ -9,6 +9,7 @@ const RecipeDetail = () => {
   let params = useParams();
   const [details, setDetails] = useState({});
   const [activeTab, setActiveTab] = useState("instructions");
+  const[isClicked, setIsClicked] = useState(false)
 
   const fetchDetails = async () => {
     const data = await fetch(
@@ -24,13 +25,11 @@ const RecipeDetail = () => {
 
   const { addToFavourite } = useContext(RecipeContext);
 
-  const notify = () => {
-    toast("Added to favourite");
-  };
 
   const handleClick = () => {
-    notify();
+    // notify();
     addToFavourite(details.id, details.image, details.title);
+    setIsClicked(!isClicked)
   };
 
   return (

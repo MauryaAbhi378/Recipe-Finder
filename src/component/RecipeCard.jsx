@@ -12,12 +12,12 @@ const RecipeCard = ({ recipe: { id, image, title } }) => {
 
   const[isClicked, setIsClicked] = useState(false)
   
-  const notify = () => {
-    toast("Added to favourite")
-  }
+  // const notify = () => {
+  //   toast("Added to favourite")
+  // }
 
   const handleClick = () => {
-    notify()
+    // notify()
     addToFavourite(id, image, title)
     setIsClicked(!isClicked)
     isAdded ? addToFavourite(id, image, title) : removeFromFavourite(id)

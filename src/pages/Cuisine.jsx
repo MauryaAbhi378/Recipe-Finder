@@ -19,7 +19,7 @@ const Cuisine = () => {
   }, [params.type]);
 
   return (
-    <div className="w-3/5 m-auto mt-10 grid grid-cols-3 gap-12">
+    <div className="w-4/5 m-auto mt-10 grid grid-cols-3 gap-12">
       {cuisine.map((recipe, id) => {
         return <RecipeCard key={id} recipe={recipe} />;
       })}
