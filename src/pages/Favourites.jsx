@@ -6,6 +6,9 @@ import { CiHeart } from "react-icons/ci";
 
 const Favourites = () => {
   const { favourites, removeFromFavourite } = useContext(RecipeContext);
+  // const[isClicked, setIsClicked] = useState(false)
+
+
   return (
     <div className="flex justify-center flex-col items-center">
       <h1 className="text-3xl font-bold mb-4">Favorites</h1>
@@ -28,7 +31,8 @@ const Favourites = () => {
               </Link>
               <CiHeart
                 size="1.5rem"
-                color="black"
+                // color={`${isClicked ? "red" : "white"}`}
+                color="white"
                 className="absolute top-2 right-2 cursor-pointer"
                 onClick={() => removeFromFavourite(recipe.id)}
               />

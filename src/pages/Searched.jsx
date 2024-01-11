@@ -15,7 +15,7 @@ const Searched = () => {
 
   return (
     <div>
-      <div className="w-3/5 m-auto mt-10 grid grid-cols-3 gap-12">
+      <div className="w-4/5 m-auto mt-10 grid grid-cols-3 gap-12">
         {recipes.slice(page * 9 - 9, page * 9).map((recipe, index) => {
           return <RecipeCard key={index} recipe={recipe} />;
         })}

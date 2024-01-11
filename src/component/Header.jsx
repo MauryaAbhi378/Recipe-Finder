@@ -12,7 +12,7 @@ const Header = () => {
           <GiKnifeFork />
           <div className="text-lg font-medium">delicious</div>
         </Link>
-        <Link to={"/favourite"} className="bg-blue-400 text-white p-2 rounded-sm">Favourites</Link>
+        <Link to={"/favourite"} className="bg-blue-500 text-white p-2 rounded-sm">Favourites</Link>
       </div>
     </>
   );

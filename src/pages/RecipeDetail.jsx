@@ -1,6 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { CiHeart } from "react-icons/ci";
+import { RecipeContext } from "../context/RecipeContext";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const RecipeDetail = () => {
   let params = useParams();
@@ -19,16 +22,32 @@ const RecipeDetail = () => {
     fetchDetails();
   }, [params.name]);
 
+  const { addToFavourite } = useContext(RecipeContext);
+
+  const notify = () => {
+    toast("Added to favourite");
+  };
+
+  const handleClick = () => {
+    notify();
+    addToFavourite(details.id, details.image, details.title);
+  };
+
   return (
     <div className="w-3/5 m-auto mt-8 flex justify-between flex-row ">
       <div className="relative">
         <h1 className="font-semibold text-xl mb-4">{details.title}</h1>
         <img src={details.image} alt="details.title" width={335} />
-        <CiHeart
-          size="1.5rem"
-          color="white"
-          className="absolute bottom-56 left-72"
-        />
+
+        <div>
+          <CiHeart
+            size="1.5rem"
+            color={`${isClicked ? "red" : "white"}`}
+            className="absolute bottom-56 left-72 cursor-pointer"
+            onClick={handleClick}
+          />
+          <ToastContainer />
+        </div>
       </div>
       <div className=" felx flex-col w-2/5">
         <div className="mb-4">
@@ -55,8 +74,7 @@ const RecipeDetail = () => {
             ))}
           </div>
         ) : (
-          <h3 dangerouslySetInnerHTML={{ __html:details.summary}}></h3>
-          
+          <h3 dangerouslySetInnerHTML={{ __html: details.summary }}></h3>
         )}
       </div>
     </div>

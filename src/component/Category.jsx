@@ -10,7 +10,7 @@ const Category = () => {
         to="/cuisine/Italian"
         className={({ isActive }) =>
           ` flex flex-col items-center p-2 rounded-3xl mr-3 scale-90 w-20 h-15 ${
-            isActive ? "bg-orange-700" : "bg-slate-500"
+            isActive ? "bg-orange-700" : "bg-blue-400"
           }`
         }
       >
@@ -21,7 +21,7 @@ const Category = () => {
         to="/cuisine/American"
         className={({ isActive }) =>
           ` flex flex-col items-center p-2 rounded-3xl mr-3 scale-90 w-20 h-15 ${
-            isActive ? "bg-orange-700" : "bg-slate-500"
+            isActive ? "bg-orange-700" : "bg-blue-400"
           }`
         }
       >
@@ -32,7 +32,7 @@ const Category = () => {
         to="/cuisine/Thai"
         className={({ isActive }) =>
           ` flex flex-col items-center p-2 rounded-3xl mr-3 scale-90 w-20 h-15 ${
-            isActive ? "bg-orange-700" : "bg-slate-500"
+            isActive ? "bg-orange-700" : "bg-blue-400"
           }`
         }
       >
@@ -43,7 +43,7 @@ const Category = () => {
         to="/cuisine/Japanese"
         className={({ isActive }) =>
           ` flex flex-col items-center p-2 rounded-3xl mr-3 scale-90 w-20 h-15 ${
-            isActive ? "bg-orange-700" : "bg-slate-500"
+            isActive ? "bg-orange-700" : "bg-blue-400"
           }`
         }
       >
