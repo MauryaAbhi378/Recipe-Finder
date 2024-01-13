@@ -1,21 +1,23 @@
 import React from "react";
-import { FaPizzaSlice, FaHamburger } from "react-icons/fa";
-import { GiNoodles, GiChopsticks } from "react-icons/gi";
 import { NavLink } from "react-router-dom";
+import Samosa from "../assets/samosa.png";
+import American from "../assets/hamburger.png";
+import Ramen from "../assets/ramen.png";
+import Thai from "../assets/thai-food.png";
 
 const Category = () => {
   return (
     <div className={"flex w-4/5 m-auto justify-center pt-5"}>
       <NavLink
-        to="/cuisine/Italian"
+        to="/cuisine/Indian"
         className={({ isActive }) =>
           ` flex flex-col items-center p-2 rounded-3xl mr-3 scale-90 w-20 h-15 ${
             isActive ? "bg-orange-700" : "bg-blue-400"
           }`
         }
       >
-        <FaPizzaSlice color="white" fontSize="1.5rem" />
-        <h4 className="text-white text-xs">Italian</h4>
+        <img src={Samosa} width={"40px"} alt="" />
+        <h4 className="text-white text-xs">Indian</h4>
       </NavLink>
       <NavLink
         to="/cuisine/American"
@@ -25,7 +27,7 @@ const Category = () => {
           }`
         }
       >
-        <FaHamburger color="white" fontSize="1.5rem" />
+        <img src={American} width={"40px"} alt="" />
         <h4 className="text-white text-xs">American</h4>
       </NavLink>
       <NavLink
@@ -36,7 +38,7 @@ const Category = () => {
           }`
         }
       >
-        <GiNoodles color="white" fontSize="1.5rem" />
+        <img src={Thai} width={"40px"} alt="" />
         <h4 className="text-white text-xs">Thai</h4>
       </NavLink>
       <NavLink
@@ -47,7 +49,7 @@ const Category = () => {
           }`
         }
       >
-        <GiChopsticks color="white" fontSize="1.5rem" />
+        <img src={Ramen} width={"40px"} alt="" />
         <h4 className="text-white text-xs">Japanese</h4>
       </NavLink>
     </div>

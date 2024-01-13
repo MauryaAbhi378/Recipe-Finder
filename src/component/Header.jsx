@@ -48,7 +48,7 @@ const Header = () => {
           to={"/favourite"}
           className="bg-blue-500 text-white p-2 rounded-sm"
         >
-          Favourites
+          Favorites
         </Link>
       </div>
     </>

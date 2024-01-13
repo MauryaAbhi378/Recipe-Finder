@@ -12,13 +12,6 @@ export const RecipeProvider = ({ children }) => {
     return storedFavourites || [];
   });
 
-  // useEffect(() => {
-  //   const check = JSON.parse(localStorage.getItem("favourites"));
-  //   if (check) {
-  //     setFavourites(check);
-  //   }
-  // }, []);
-
   useEffect(() => {
     localStorage.setItem("favourites", JSON.stringify(favourites));
   }, [favourites]);
@@ -34,18 +27,19 @@ export const RecipeProvider = ({ children }) => {
     setFavourites((prevFavourite) =>
       prevFavourite.filter((prev) => prev.id !== id)
     );
+    setIsAdded(!isAdded)
     toast("Removed from favourites");
   };
 
   const apiData = async (searchValue) => {
+    // const apiKey = process.env.API_KEY
     try {
       const api = await fetch(
         `https://api.spoonacular.com/recipes/complexSearch?apiKey=e8c5c5401a624c799ee54f92d381b35a&query=${searchValue}&number=36`
       );
       const data = await api.json();
       setRecipes(data.results); // Update recipes state with fetched data
-
-      return data.recipes;
+      // return data.recipes;
     } catch (error) {
       console.error("Error fetching data:", error);
     }

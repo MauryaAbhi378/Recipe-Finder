@@ -40,7 +40,19 @@ const RecipeCard = ({ recipe: { id, image, title } }) => {
             className={`absolute top-2 right-2 cursor-pointer`}
             onClick={handleClick}
           />
-          <ToastContainer />
+          <ToastContainer
+            position="top-right"
+            autoClose={3100}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="light"
+            transition:Bounce
+          />
         </div>
       </div>
     </SplideSlide>

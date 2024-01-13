@@ -5,6 +5,7 @@ import RecipeCard from "./RecipeCard";
 
 const Popular = () => {
   const [popular, setPopular] = useState([]);
+  const apiKey = import.meta.env.API_KEY
 
   const getPopular = async () => {
     const check = localStorage.getItem("popular")
@@ -13,7 +14,7 @@ const Popular = () => {
     }
     else {
       const api = await fetch(
-        `https://api.spoonacular.com/recipes/random?apiKey=e8c5c5401a624c799ee54f92d381b35a&number=9`
+        `https://api.spoonacular.com/recipes/random?apiKey=${apiKey}&number=9`
       );
       const data = await api.json();
       localStorage.setItem("popular", JSON.stringify(data.recipes))
