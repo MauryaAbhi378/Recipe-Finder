@@ -17,17 +17,23 @@ export const RecipeProvider = ({ children }) => {
   }, [favourites]);
 
   const addToFavourite = (id, image, title) => {
-    const newFavourite = { id, image, title };
-    setFavourites((prevFavourite) => [...prevFavourite, newFavourite]);
-    setIsAdded(!isAdded);
-    toast("Added to favourite");
+    const isAlreadyAdded = favourites.filter((item) => item.id === id);
+    
+    if (isAlreadyAdded) {
+      removeFromFavourite(id);
+    } else {
+      const newFavourite = { id, image, title };
+      setFavourites((prevFavourite) => [...prevFavourite, newFavourite]);
+      setIsAdded(true);
+      toast("Added to favourite");
+    }
   };
 
   const removeFromFavourite = (id) => {
     setFavourites((prevFavourite) =>
       prevFavourite.filter((prev) => prev.id !== id)
     );
-    setIsAdded(!isAdded)
+    setIsAdded(!isAdded);
     toast("Removed from favourites");
   };
 
@@ -39,7 +45,6 @@ export const RecipeProvider = ({ children }) => {
       );
       const data = await api.json();
       setRecipes(data.results); // Update recipes state with fetched data
-      // return data.recipes;
     } catch (error) {
       console.error("Error fetching data:", error);
     }

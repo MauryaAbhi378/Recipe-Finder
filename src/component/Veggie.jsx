@@ -5,7 +5,7 @@ import RecipeCard from "./RecipeCard";
 
 const Veggie = () => {
   const [veggie, setVeggie] = useState([]);
-  const apiKey = import.meta.env.API_KEY
+  // const apiKey = import.meta.env.API_KEY
 
   const getVeggie = async () => {
     let check = localStorage.getItem("veggie");
@@ -13,7 +13,7 @@ const Veggie = () => {
       setVeggie(JSON.parse(check));
     } else {
       const api = await fetch(
-        `https://api.spoonacular.com/recipes/random?apiKey=${apiKey}&number=9&tags=vegetarian`
+        `https://api.spoonacular.com/recipes/random?apiKey=7561c94016cf478cbf0abe03c8c6cf5c&number=9&tags=vegetarian`
       );
       const data = await api.json();
       localStorage.setItem("veggie", JSON.stringify(data.recipes));

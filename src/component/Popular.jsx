@@ -5,19 +5,18 @@ import RecipeCard from "./RecipeCard";
 
 const Popular = () => {
   const [popular, setPopular] = useState([]);
-  const apiKey = import.meta.env.API_KEY
+  // const apiKey = import.meta.env.API_KEY
 
   const getPopular = async () => {
-    const check = localStorage.getItem("popular")
-    if(check) {
-      setPopular(JSON.parse(check))
-    }
-    else {
+    let check = localStorage.getItem("popular");
+    if (check) {
+      setPopular(JSON.parse(check));
+    } else {
       const api = await fetch(
-        `https://api.spoonacular.com/recipes/random?apiKey=${apiKey}&number=9`
+        `https://api.spoonacular.com/recipes/random?apiKey=7561c94016cf478cbf0abe03c8c6cf5c&number=9`
       );
       const data = await api.json();
-      localStorage.setItem("popular", JSON.stringify(data.recipes))
+      localStorage.setItem("popular", JSON.stringify(data.recipes));
       setPopular(data.recipes);
     }
   };
