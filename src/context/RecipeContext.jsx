@@ -4,7 +4,6 @@ import { toast } from "react-toastify";
 export const RecipeContext = createContext();
 
 export const RecipeProvider = ({ children }) => {
-  const [recipes, setRecipes] = useState([]); // Define recipes state
   const [isAdded, setIsAdded] = useState(false);
 
   const [favourites, setFavourites] = useState(() => {
@@ -37,26 +36,11 @@ export const RecipeProvider = ({ children }) => {
     toast("Removed from favourites");
   };
 
-  const apiData = async (searchValue) => {
-    // const apiKey = process.env.API_KEY
-    try {
-      const api = await fetch(
-        `https://api.spoonacular.com/recipes/complexSearch?apiKey=e8c5c5401a624c799ee54f92d381b35a&query=${searchValue}&number=36`
-      );
-      const data = await api.json();
-      setRecipes(data.results); // Update recipes state with fetched data
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
-  };
-
   return (
     <RecipeContext.Provider
       value={{
-        recipes,
         favourites,
         isAdded,
-        apiData,
         addToFavourite,
         removeFromFavourite,
       }}

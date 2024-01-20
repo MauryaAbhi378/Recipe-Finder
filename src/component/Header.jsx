@@ -1,13 +1,11 @@
-import React, {useContext, useState} from "react";
+import React, { useContext, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { GiKnifeFork } from "react-icons/gi";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
-import { RecipeContext } from "../context/RecipeContext";
 
 const Header = () => {
-  const { apiData } = useContext(RecipeContext);
   const [search, setSearch] = useState("");
   const navigate = useNavigate();
 
@@ -17,10 +15,10 @@ const Header = () => {
 
   const handleButtonClick = (e) => {
     e.preventDefault();
-    apiData(search);
     navigate(`/searched/${search}`);
     setSearch("");
   };
+
   return (
     <>
       <div className="w-full h-24  flex justify-evenly items-center border-b-2">

@@ -1,11 +1,29 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import RecipeCard from "../component/RecipeCard";
-import { RecipeContext } from "../context/RecipeContext";
 import { GrFormPrevious, GrFormNext } from "react-icons/gr";
+import { useParams } from "react-router-dom";
 
 const Searched = () => {
-  const { recipes } = useContext(RecipeContext);
+  const[recipes, setRecipes] = useState([])
   const [page, setPage] = useState(1);
+  let params = useParams()
+
+  const apiData = async (searchValue) => {
+    // const apiKey = process.env.API_KEY
+    try {
+      const api = await fetch(
+        `https://api.spoonacular.com/recipes/complexSearch?apiKey=e8c5c5401a624c799ee54f92d381b35a&query=${searchValue}&number=36`
+      );
+      const data = await api.json();
+      setRecipes(data.results); 
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+
+  useEffect(() => {
+    apiData(params.search)
+  }, [params.search])
 
   const selectedPage = (page) => {
     if (page >= 1 && page <= recipes.length / 9) {
