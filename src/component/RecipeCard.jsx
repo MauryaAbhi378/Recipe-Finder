@@ -3,20 +3,13 @@ import { SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/splide/dist/css/splide.min.css";
 import { CiHeart } from "react-icons/ci";
 import { Link } from "react-router-dom";
-import { RecipeContext } from "../context/RecipeContext";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const RecipeCard = ({ recipe: { id, image, title } }) => {
-  const { addToFavourite, removeFromFavourite, isAdded } =
-    useContext(RecipeContext);
-
   const [isClicked, setIsClicked] = useState(false);
 
   const handleClick = () => {
-    isAdded === false
-      ? addToFavourite(id, image, title)
-      : removeFromFavourite(id);
     setIsClicked(!isClicked);
   };
 

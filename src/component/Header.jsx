@@ -9,10 +9,6 @@ const Header = () => {
   const [search, setSearch] = useState("");
   const navigate = useNavigate();
 
-  const handleInputChange = (e) => {
-    setSearch(e.target.value);
-  };
-
   const handleButtonClick = (e) => {
     e.preventDefault();
     navigate(`/searched/${search}`);
@@ -33,7 +29,7 @@ const Header = () => {
               className="outline-none w-full"
               placeholder="Enter Recipe Name"
               value={search}
-              onChange={handleInputChange}
+              onChange={((e) => setSearch(e.target.value))}
             />
             <FontAwesomeIcon
               icon={faMagnifyingGlass}

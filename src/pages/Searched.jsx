@@ -16,6 +16,7 @@ const Searched = () => {
       );
       const data = await api.json();
       setRecipes(data.results); 
+      console.log(data.results)
     } catch (error) {
       console.error("Error fetching data:", error);
     }
