@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import RecipeCard from "../component/RecipeCard";
 import { GrFormPrevious, GrFormNext } from "react-icons/gr";
 import { useParams } from "react-router-dom";
@@ -9,10 +9,9 @@ const Searched = () => {
   let params = useParams()
 
   const apiData = async (searchValue) => {
-    // const apiKey = process.env.API_KEY
     try {
       const api = await fetch(
-        `https://api.spoonacular.com/recipes/complexSearch?apiKey=e8c5c5401a624c799ee54f92d381b35a&query=${searchValue}&number=36`
+        `https://api.spoonacular.com/recipes/complexSearch?apiKey=7561c94016cf478cbf0abe03c8c6cf5c&query=${searchValue}&number=36`
       );
       const data = await api.json();
       setRecipes(data.results); 
