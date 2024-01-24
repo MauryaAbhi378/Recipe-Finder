@@ -3,24 +3,23 @@ import { SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/splide/dist/css/splide.min.css";
 import { CiHeart } from "react-icons/ci";
 import { Link } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
 import { FavoriteContext } from "../Context/RecipeContext";
 
 const RecipeCard = ({ recipe }) => {
-  const {addToFavorite, removeFromFavorite, isFavorite} = useContext(FavoriteContext)
+  const { addToFavorite, removeFromFavorite, isFavorite } =
+    useContext(FavoriteContext);
   const [isClicked, setIsClicked] = useState(false);
-
+  
   const handleClick = () => {
-    console.log(!isFavorite(recipe.id))
-    if(!isFavorite(recipe.id)) {
-      addToFavorite(recipe)
-      toast("Added To Favorite")
+    if (!isFavorite(recipe.id)) {
+      addToFavorite(recipe);
+      toast("Added To Favorite");
+      // localStorage.setItem("favorite", JSON.stringify(recipe))
       setIsClicked(!isClicked);
-    }
-    else {
-      removeFromFavorite(recipe.id)
-      toast("Remove from Favorite")
+    } else {
+      removeFromFavorite(recipe.id);
+      toast("Remove from Favorite");
     }
   };
 
@@ -44,22 +43,9 @@ const RecipeCard = ({ recipe }) => {
         <div>
           <CiHeart
             size="1.5rem"
-            color={`${isClicked ? "red" : "white"}`}
+            color={`${isFavorite(recipe.id) ? "red" : "white"}`}
             className={`absolute top-2 right-2 cursor-pointer`}
             onClick={handleClick}
-          />
-          <ToastContainer
-            position="top-right"
-            autoClose={3100}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover
-            theme="light"
-            transition:Bounce
           />
         </div>
       </div>
