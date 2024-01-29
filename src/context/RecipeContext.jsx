@@ -7,18 +7,14 @@ export const useFavorite = () => {
 };
 
 export const FavoriteProvider = ({ children }) => {
-  const [favorite, setFavorite] = useState([]);
-  
-//   useEffect(() => {
-//     let check = localStorage.getItem("favorite")
-//     if(check) {
-//         setFavorite(JSON.parse(check))
-//     }
-//   }, [])
+  const [favorite, setFavorite] = useState(() => {
+    let check = localStorage.getItem("favorite");
+    return check ? JSON.parse(check) : [];
+  });
 
-//   useEffect(() => {
-//     localStorage.setItem("favorite", JSON.stringify(favorite))
-//   }, [favorite])
+  useEffect(() => {
+    localStorage.setItem("favorite", JSON.stringify(favorite));
+  }, [favorite]);
 
   const addToFavorite = (recipe) => {
     setFavorite((prev) => [...prev, recipe]);
@@ -36,7 +32,7 @@ export const FavoriteProvider = ({ children }) => {
 
   return (
     <FavoriteContext.Provider
-      value={{ favorite, setFavorite, addToFavorite, removeFromFavorite, isFavorite }}
+      value={{ favorite, addToFavorite, removeFromFavorite, isFavorite }}
     >
       {children}
     </FavoriteContext.Provider>

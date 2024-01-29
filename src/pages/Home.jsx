@@ -4,7 +4,7 @@ import Veggie from "../component/Veggie"
 
 const Home = () => {
   return (
-    <div>
+    <div className=''>
       <Popular />
       <Veggie />
     </div>

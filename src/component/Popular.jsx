@@ -13,7 +13,7 @@ const Popular = () => {
       setPopular(JSON.parse(check));
     } else {
       const api = await fetch(
-        `https://api.spoonacular.com/recipes/random?apiKey=7561c94016cf478cbf0abe03c8c6cf5c&number=9`
+        `https://api.spoonacular.com/recipes/random?apiKey=f3b8213250e04452abd141b9b731f2c4&number=9`
       );
       const data = await api.json();
       localStorage.setItem("popular", JSON.stringify(data.recipes));
@@ -26,8 +26,8 @@ const Popular = () => {
   }, []);
 
   return (
-    <>
-      <h1 className="mt-12 pl-48 mb-5 font-semibold text-lg">Popular Picks</h1>
+    <div className="flex flex-col">
+      <h1 className="mt-12 pl-48 mb-5 font-semibold text-lg max-sm:pl-16">Popular Picks</h1>
       <div className="w-4/5 mx-auto">
         <Splide
           options={{
@@ -35,6 +35,11 @@ const Popular = () => {
             arrows: false,
             drag: "free",
             pagination: false,
+            breakpoints : {
+              480 : {
+                perPage : 1
+              }
+            }
           }}
         >
           {popular.map((recipe, id) => {
@@ -42,7 +47,7 @@ const Popular = () => {
           })}
         </Splide>
       </div>
-    </>
+    </div>
   );
 };
 

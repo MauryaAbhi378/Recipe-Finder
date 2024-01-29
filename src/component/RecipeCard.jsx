@@ -15,7 +15,6 @@ const RecipeCard = ({ recipe }) => {
     if (!isFavorite(recipe.id)) {
       addToFavorite(recipe);
       toast("Added To Favorite");
-      // localStorage.setItem("favorite", JSON.stringify(recipe))
       setIsClicked(!isClicked);
     } else {
       removeFromFavorite(recipe.id);

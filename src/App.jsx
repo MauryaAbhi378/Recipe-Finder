@@ -10,22 +10,24 @@ const App = () => {
   return (
     <>
       <BrowserRouter>
-      <ToastContainer
-            position="top-right"
-            autoClose={3100}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover
-            theme="light"
-            transition:Bounce
-          />
-        <Header />
-        <Category />
-        <Pages />
+        <ToastContainer
+          position="top-right"
+          autoClose={3100}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+          transition:Bounce
+        />
+        <div className="">
+          <Header />
+          <Category />
+          <Pages />
+        </div>
       </BrowserRouter>
     </>
   );

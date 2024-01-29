@@ -4,26 +4,33 @@ import { GrFormPrevious, GrFormNext } from "react-icons/gr";
 import { useParams } from "react-router-dom";
 
 const Searched = () => {
-  const[recipes, setRecipes] = useState([])
+  const [recipes, setRecipes] = useState([]);
   const [page, setPage] = useState(1);
-  let params = useParams()
+  const[errorMessage, setErrorMessage] = useState("")
+  let params = useParams();
 
   const apiData = async (searchValue) => {
     try {
       const api = await fetch(
-        `https://api.spoonacular.com/recipes/complexSearch?apiKey=7561c94016cf478cbf0abe03c8c6cf5c&query=${searchValue}&number=36`
+        `https://api.spoonacular.com/recipes/complexSearch?apiKey=e8c5c5401a624c799ee54f92d381b35a&query=${searchValue}&number=36`
       );
       const data = await api.json();
-      setRecipes(data.results); 
-      console.log(data.results)
+      console.log(data)
+      if (data.results.length > 0) {
+        setRecipes(data.results);
+      }
+      else {
+        setErrorMessage(`${searchValue} Not Found`)
+        setRecipes(data.results)
+      }
     } catch (error) {
       console.error("Error fetching data:", error);
     }
   };
 
   useEffect(() => {
-    apiData(params.search)
-  }, [params.search])
+    apiData(params.search);
+  }, [params.search]);
 
   const selectedPage = (page) => {
     if (page >= 1 && page <= recipes.length / 9) {
@@ -33,11 +40,14 @@ const Searched = () => {
 
   return (
     <div>
-      <div className="w-4/5 m-auto mt-10 grid grid-cols-3 gap-12">
+      <div className="w-4/5 m-auto mt-10 grid grid-cols-1 gap-12 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3">
         {recipes.slice(page * 9 - 9, page * 9).map((recipe, index) => {
           return <RecipeCard key={index} recipe={recipe} />;
         })}
       </div>
+      { recipes.length === 0 &&
+        <div className="flex justify-center text-lg">{errorMessage}</div>
+      }
       {recipes.length > 0 && (
         <div className="flex justify-center mt-10 items-center cursor-pointer">
           <span className="px-2">
