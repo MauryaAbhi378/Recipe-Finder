@@ -4,7 +4,7 @@ import "@splidejs/splide/dist/css/splide.min.css";
 import { CiHeart } from "react-icons/ci";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
-import { FavoriteContext } from "../Context/RecipeContext";
+import { FavoriteContext } from "../Context/FavoriteContext";
 
 const RecipeCard = ({ recipe }) => {
   const { addToFavorite, removeFromFavorite, isFavorite } =
