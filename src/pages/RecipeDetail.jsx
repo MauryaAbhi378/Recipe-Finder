@@ -12,6 +12,7 @@ const RecipeDetail = () => {
       `https://api.spoonacular.com/recipes/${params.name}/information?apiKey=7561c94016cf478cbf0abe03c8c6cf5c`
     );
     const details = await data.json();
+    // console.log(recipe);
     setDetails(details);
   };
 
@@ -20,18 +21,20 @@ const RecipeDetail = () => {
   }, [params.name]);
 
   return (
-    <div className="w-3/4 m-auto flex justify-evenly mt-8 max-sm:flex-col">
-      <div className="flex items-center flex-col">
+    <div className="max-w-6xl  m-auto flex justify-evenly items-center mt-8 max-md:flex-col">
+      <div className=" flex items-center flex-col left md:w-1/2">
         <h1 className="font-semibold text-xl mb-4">{details.title}</h1>
-        <img
-          src={details.image}
-          className="rounded-md border-2"
-          alt={details.title}
-          width={335}
-        />
+        <div className="">
+          <img
+            src={details.image}
+            className="rounded-md border-2"
+            alt={details.title}
+            width={335}
+          />
+        </div>
       </div>
 
-      <div className="mt-8">
+      <div className="mt-8 md:w-1/2 max-md:flex max-md:flex-col max-md:items-center">
         <div>
           <button
             className={`p-2 border-2 border-slate-900 font-semibold ${
@@ -51,19 +54,19 @@ const RecipeDetail = () => {
           </button>
         </div>
 
-        <div className="mt-4">
+        <div className="mt-4 max-md:m-10">
           {activeTab === "instructions" ? (
-            <div
-              dangerouslySetInnerHTML={{ __html: details.summary }}
-            ></div>
+            <div dangerouslySetInnerHTML={{ __html: details.summary }}></div>
           ) : (
-            <ul className="list-disc list-inside ">
-              {details.extendedIngredients.map((ingredient) => (
-                <li className="text-black" key={ingredient.id}>
-                  {ingredient.original}
-                </li>
-              ))}
-            </ul>
+            <div>
+              <ul className="list-disc list-inside ">
+                {details.extendedIngredients.map((ingredient) => (
+                  <li className="text-black" key={ingredient.id}>
+                    {ingredient.original}
+                  </li>
+                ))}
+              </ul>
+            </div>
           )}
         </div>
       </div>

@@ -5,7 +5,6 @@ import RecipeCard from "./RecipeCard";
 
 const Veggie = () => {
   const [veggie, setVeggie] = useState([]);
-  // const apiKey = import.meta.env.API_KEY
 
   const getVeggie = async () => {
     let check = localStorage.getItem("veggie");
@@ -40,6 +39,9 @@ const Veggie = () => {
           breakpoints : {
             480 : {
               perPage : 1
+            },
+            768 : {
+              perPage:2
             }
           }
         }}>

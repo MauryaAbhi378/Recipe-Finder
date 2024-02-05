@@ -12,7 +12,7 @@ const Searched = () => {
   const apiData = async (searchValue) => {
     try {
       const api = await fetch(
-        `https://api.spoonacular.com/recipes/complexSearch?apiKey=e8c5c5401a624c799ee54f92d381b35a&query=${searchValue}&number=36`
+        `https://api.spoonacular.com/recipes/complexSearch?apiKey=f3b8213250e04452abd141b9b731f2c4&query=${searchValue}&number=36`
       );
       const data = await api.json();
       console.log(data)
@@ -24,7 +24,7 @@ const Searched = () => {
         setRecipes(data.results)
       }
     } catch (error) {
-      console.error("Error fetching data:", error);
+      console.log("Error fetching data:", error);
     }
   };
 

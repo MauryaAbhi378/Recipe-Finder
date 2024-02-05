@@ -5,7 +5,6 @@ import RecipeCard from "./RecipeCard";
 
 const Popular = () => {
   const [popular, setPopular] = useState([]);
-  // const apiKey = import.meta.env.API_KEY
 
   const getPopular = async () => {
     let check = localStorage.getItem("popular");
@@ -38,6 +37,9 @@ const Popular = () => {
             breakpoints : {
               480 : {
                 perPage : 1
+              },
+              768 : {
+                perPage:2
               }
             }
           }}

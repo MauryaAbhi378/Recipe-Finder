@@ -28,6 +28,7 @@ const RecipeCard = ({ recipe }) => {
         <Link
           to={`/recipe/${recipe.id}`}
           className="block rounded-lg overflow-hidden shadow-md"
+          recipe={recipe}
         >
           <img
             src={recipe.image}
